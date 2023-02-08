@@ -1,9 +1,16 @@
+:root {
+  --bg-color: #2C0E39;
+  --font-display: 'Fjalla One';
+  --grid-layout: repeat(auto-fit, minmax(300px, 1fr));
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--font-display);
+  background-color: var(--bg-color);
+  color: white;
 }
 
 a {

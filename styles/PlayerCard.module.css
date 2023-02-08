@@ -1,0 +1,150 @@
+.playerGrid {
+    --font-title: 'Fjalla One', sans-serif;
+    --font-position: 'Montserrat', sans-serif;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 15px;
+}
+
+.playerCard {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    aspect-ratio: 300 / 450;
+    perspective: 500px;
+}
+
+.front,
+.back {
+    backface-visibility: hidden;
+    outline: 1px solid silver;
+    padding: 15px;
+}
+
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotateY(180deg);
+}
+
+.front {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: url("https://ninernoise.com/wp-content/uploads/getty-images/2021/01/460639708.jpeg") center / cover no-repeat;
+}
+
+.draftBtn {
+    position: relative;
+    display: inline-flex;
+    align-self: flex-end;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.content {
+    position: relative;
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    height: 100%;
+    z-index: 1;
+}
+
+.content.flip {
+    transform: rotateY(180deg);
+}
+
+.stats {
+    position: relative;
+    display: inline;
+    z-index: 1;
+}
+
+.content.flip .front {
+    pointer-events: none;
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (hover: hover) {
+    .stats {
+        display: none;
+    }
+
+    .playerCard:hover .content {
+        transform: rotateY(180deg);
+    }
+
+    .playerCard.flip .content {
+        transform: rotateY(0deg);
+    }
+}
+
+.playerCard .front::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(60deg, rgba(255,255,255,0.35) 0%, rgba(0,0,0,0.5) 100%);
+}
+
+.upper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: right;
+    z-index: 1;
+}
+
+.upper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    outline: 1px solid goldenrod;
+}
+
+.upper h3 {
+    font: normal normal 14px/17px var(--font-title);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #261A0D;
+}
+
+.upper h4 {
+    font: normal bold 17px/20px var(--font-position);
+    letter-spacing: 4px;
+    margin: 8px 0;
+    color: #362112;
+}
+
+.logo {
+    position: relative;
+    margin-top: auto;
+    z-index: 1;
+    background-color: midnightblue;
+}
+
+.logo svg text tspan {
+    font: normal bold 16px/23px var(--font-title);
+    text-transform: uppercase;
+}

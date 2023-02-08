@@ -1,0 +1,14 @@
+.filterCont {
+    display: flex;
+    justify-content: space-around;
+    margin: 35px 0;
+    padding: 0 15px;
+}
+
+.filterCont button {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 8px;
+    border-radius: 4px;
+}
