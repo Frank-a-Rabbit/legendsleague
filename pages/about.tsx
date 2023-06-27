@@ -11,14 +11,14 @@ const About = () => {
                 </p>
                 <p>
                     <span>Our Mission:</span>
-                    At Fantasy Football Heroes, our mission is to provide an immersive and thrilling fantasy football experience that captures the essence of the game's history. We believe in the power of nostalgia and the thrill of strategizing with classic player stats, enabling football fans to relive the greatness of iconic players and create their own fantasy dynasty.
+                    At Fantasy Football Heroes, our mission is to provide an immersive and thrilling fantasy football experience that captures the essence of the game&apos;s history. We believe in the power of nostalgia and the thrill of strategizing with classic player stats, enabling football fans to relive the greatness of iconic players and create their own fantasy dynasty.
                 </p>
                 <p>
                     <span>How It Works:</span>
                     Creating your fantasy team at Fantasy Football Heroes is a seamless and intuitive process. We have curated an extensive database of classic player stats, ensuring that you have access to the most accurate and reliable information. Delve into the achievements and performances of football legends from different eras, allowing you to assemble a formidable lineup that embodies the best of the best.
                 </p>
                 <p>
-                    Join Fantasy Football Heroes today and embark on a journey that combines your passion for football with the allure of classic player stats. Build your fantasy team, compete against the game's AI, and establish your legacy as the ultimate fantasy football manager. Get ready to create your own chapter in the history of the game!
+                    Join Fantasy Football Heroes today and embark on a journey that combines your passion for football with the allure of classic player stats. Build your fantasy team, compete against the game&apos;s AI, and establish your legacy as the ultimate fantasy football manager. Get ready to create your own chapter in the history of the game!
                 </p>
             </main>
         </section>
