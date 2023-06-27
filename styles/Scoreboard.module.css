@@ -1,0 +1,54 @@
+.scoreboard {
+    padding-bottom: 55px;
+}
+
+.toggles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.toggles button,
+.replay {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    margin: 0 5px;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.75);
+}
+
+.replay {
+    max-width: 250px;
+    margin: 0 auto 25px;
+}
+
+.overallCont {
+    display: flex;
+    flex-direction: column;
+}
+
+.scores {
+    display: flex;
+    justify-content: center;
+}
+
+.scores span {
+    display: block;
+    margin: 10px;
+}
+
+.teamBoard,
+.opponentBoard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(375px, 1fr));
+}

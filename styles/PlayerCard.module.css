@@ -12,9 +12,14 @@
     position: relative;
     width: 100%;
     max-width: 300px;
-    margin: 0 auto;
+    margin: 0 auto 40px;
     aspect-ratio: 300 / 450;
     perspective: 500px;
+}
+
+.drafted {
+    opacity: 0.5;
+    pointer-events: none;
 }
 
 .front,
@@ -22,6 +27,7 @@
     backface-visibility: hidden;
     outline: 1px solid silver;
     padding: 15px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .back {
@@ -31,13 +37,26 @@
     width: 100%;
     height: 100%;
     transform: rotateY(180deg);
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 .front {
+    position: relative;
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: url("https://ninernoise.com/wp-content/uploads/getty-images/2021/01/460639708.jpeg") center / cover no-repeat;
+}
+
+.front[data-p="QB"] {
+    background: url("/assets/qb.webp") center / cover;
+}
+
+.front[data-p="RB"] {
+    background: url("/assets/rb.webp") center / cover;
+}
+
+.front[data-p="WR"] {
+    background: url("/assets/wr.webp") center / cover;
 }
 
 .draftBtn {
@@ -67,6 +86,26 @@
     z-index: 1;
 }
 
+.stats button {
+    position: relative;
+    padding: 10px;
+    background-color: whitesmoke;
+    text-align: right;
+    z-index: 1;
+    border: none;
+}
+
+.stats button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    outline: 1px solid goldenrod;
+}
+
 .content.flip .front {
     pointer-events: none;
 }
@@ -76,7 +115,38 @@
     flex-direction: column;
 }
 
-@media (hover: hover) {
+.header {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.header button {
+    position: relative;
+    padding: 10px;
+    background-color: rgba(255,0,0,0.5);
+    text-align: right;
+    z-index: 1;
+    border: none;
+    cursor: pointer;
+    color: khaki;
+}
+
+.header button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    outline: 1px solid white;
+}
+
+/* @media (hover: hover) {
     .stats {
         display: none;
     }
@@ -88,7 +158,7 @@
     .playerCard.flip .content {
         transform: rotateY(0deg);
     }
-}
+} */
 
 .playerCard .front::after {
     content: "";
@@ -106,7 +176,7 @@
     flex-direction: column;
     align-self: flex-end;
     padding: 10px;
-    background-color: whitesmoke;
+    background-color: rgba(255,0,0,0.5);
     text-align: right;
     z-index: 1;
 }
@@ -119,22 +189,23 @@
     transform: translate(-50%, -50%);
     width: calc(100% - 8px);
     height: calc(100% - 8px);
-    outline: 1px solid goldenrod;
+    outline: 1px solid white;
 }
 
 .upper h3 {
-    font: normal normal 14px/17px var(--font-title);
+    font: normal normal 16px/17px var(--font-title);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin: 0;
-    color: #261A0D;
+    color: white;
 }
 
 .upper h4 {
     font: normal bold 17px/20px var(--font-position);
     letter-spacing: 4px;
     margin: 8px 0;
-    color: #362112;
+    color: khaki;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.85);
 }
 
 .logo {

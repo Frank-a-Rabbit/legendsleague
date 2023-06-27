@@ -1,16 +1,20 @@
 :root {
-  --bg-color: #2C0E39;
+  --bg-color: #f8f8f2;
   --font-display: 'Fjalla One';
   --grid-layout: repeat(auto-fit, minmax(300px, 1fr));
+  --black: #2b2c2d;
 }
 
 html,
 body {
-  padding: 0;
+  padding: 0 0 80px;
   margin: 0;
   font-family: var(--font-display);
   background-color: var(--bg-color);
-  color: white;
+}
+
+@media (min-width: 800px) {
+  html, body { padding: 0; }
 }
 
 a {
@@ -30,4 +34,8 @@ a {
     color: white;
     background: black;
   }
+}
+
+.mainSection {
+  
 }

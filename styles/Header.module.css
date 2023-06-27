@@ -1,12 +1,65 @@
 .primaryHeader {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     padding: 10px;
+    /* background: url(/assets/logo.png) center / contain no-repeat, #636365; */
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.15) 100%); */
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.25);
+    z-index: 1;
+}
+
+.primaryHeader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.primaryHeader::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 300 / 400;
+    background: url(/assets/ffh-header.png) left -65px / cover no-repeat;
+    z-index: -1;
 }
 
 .primaryHeader > div:nth-child(2) {
+    position: static;
+    display: flex;
+    align-items: center;
     order: 1;
+    z-index: 10000;
+}
+
+.accent {
+    position: absolute;
+    aspect-ratio: 300 / 400;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+.accent::before {
+    content: "";
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    aspect-ratio: 300 / 400;
+    background: url(/assets/halftone.png) bottom / contain repeat-x;
+    z-index: 1;
 }
 
 .primaryHeader > div:nth-child(1) {
@@ -18,6 +71,7 @@
     justify-content: flex-end;
     padding: 10px;
     letter-spacing: 3px;
+    color: white;
 }
 
 .primaryHeader nav > div {
@@ -43,7 +97,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 105px);
+    height: 100vh;
     padding: 15px;
     transition: transform 0.25s ease-out;
     transform: translateX(-100%);
@@ -59,6 +113,7 @@
 .primaryHeader > div:nth-child(2) > div a {
     letter-spacing: 3px;
     margin-bottom: 15px;
+    color: white;
 }
 
 .primaryHeader > div:nth-child(2) > button {
@@ -69,17 +124,71 @@
     height: 50px;
     border-radius: 100%;
     font-family: var(--font-display);
+    background: red;
+    color: white;
+    letter-spacing: 3px;
 }
 
 .avatar {
     border-radius: 100%;
     margin-bottom: 12px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: black;
 }
 
 .avatarCont {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
     order: 2;
+    z-index: 1;
+}
+
+.avatarCont button {
+    color: white;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
+}
+
+.primaryHeading {
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+    text-shadow: 3px 2px rgba(0,0,0,0.8);
+    text-transform: uppercase;
+    color: white;
+}
+
+@media (min-width: 500px) {
+    .primaryHeader::after,
+    .accent,
+    .accent::before {
+        aspect-ratio: 300 / 240;
+    }
+
+    .accent::before {
+        bottom: -15px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .primaryHeader::after,
+    .accent,
+    .accent::before {
+        aspect-ratio: 1100 / 450;
+    }
+
+    .primaryHeader > div:nth-child(2) > button {
+        width: 80px;
+        height: 80px;
+    }
 }

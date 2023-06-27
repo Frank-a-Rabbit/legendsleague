@@ -9,5 +9,17 @@
 }
 
 .navCont ul li {
+    display: flex;
+    align-items: center;
     margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.navCont ul li svg {
+    width: 24px;
+    margin-right: 15px;
+}
+
+.navCont ul li svg path {
+    fill: #FF0000;
 }

@@ -4,6 +4,7 @@ import styles from "../styles/PlayerCard.module.css"
 
 interface playerData {
     id : number,
+    drafted : boolean,
     first_name : string,
     last_name : string,
     position : string,
@@ -35,6 +36,8 @@ const PlayerCard = ({ data, showDraft, cb = () => {} } : Props) => {
                 return (
                     <div>
                         <h5>Total Passing Yards: {data.totalYards}</h5>
+                        <h5>Total Touchdowns: {data.totalTouchdowns}</h5>
+                        <h5>Total Interceptions: {data.totalInterceptions}</h5>
                     </div>
                 )
             break;
@@ -47,16 +50,18 @@ const PlayerCard = ({ data, showDraft, cb = () => {} } : Props) => {
         }
     }
     return (
-        <div className={styles.playerCard}>
+        <div className={`${styles.playerCard} ${data.drafted ? styles.drafted : ""}`}>
             <div className={toggleClassName === false ? styles.content : styles.content+" "+styles.flip}>
-                <div className={styles.front}>
-                    {showDraft && (
-                        <div className={styles.draftBtn}>
-                            <button type="button" onClick={() => cb(data)}>Draft</button>
-                        </div>
-                    )}
-                    <div className={styles.stats}>
-                        <button onClick={() => setClassName(!toggleClassName)}>Career Stats</button>
+                <div className={styles.front} data-p={data.position}>
+                    <div className={styles.header}>
+                        {showDraft && (
+                            <div className={styles.draftBtn}>
+                                <button type="button" onClick={() => cb(data)}>Draft</button>
+                            </div>
+                        )}
+                        {/* <div className={styles.stats}>
+                            <button onClick={() => setClassName(!toggleClassName)}>Career Stats</button>
+                        </div> */}
                     </div>
                     <div className={styles.upper}>
                         <h3>{data.first_name+" "+data.last_name}</h3>
@@ -66,7 +71,7 @@ const PlayerCard = ({ data, showDraft, cb = () => {} } : Props) => {
                         <svg width="270" viewBox="0 0 270 50" xmlns="http://www.w3.org/2000/svg">
                             <defs>
                                 <filter id="textFilter" width="300%" height="300%" x="-150%" y="-150%">
-                                    <feSpecularLighting surfaceScale="0.6" specularConstant="1.5" specularExponent="10" lighting-color="orange" in="sourceGraphic" result="lights-final">
+                                    <feSpecularLighting surfaceScale="0.6" specularConstant="1.5" specularExponent="10" lighting-color="red" in="sourceGraphic" result="lights-final">
                                         <fePointLight x="135" y="-10" z="120"></fePointLight>
                                     </feSpecularLighting>
                                     <feComposite in="lights-final" in2="sourceGraphic" result="comp" operator="in"></feComposite>

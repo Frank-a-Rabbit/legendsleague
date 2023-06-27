@@ -1,0 +1,17 @@
+.aboutCont {
+    padding: 15px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.aboutCont span {
+    display: block;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.aboutCont p {
+    font-size: 18px;
+    line-height: 28px;
+}
