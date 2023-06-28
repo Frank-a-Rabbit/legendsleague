@@ -60,7 +60,6 @@
     aspect-ratio: 300 / 400;
     background: url(/assets/halftone.png) bottom / contain repeat-x;
     z-index: 1;
-    display: none;
 }
 
 .primaryHeader > div:nth-child(1) {
