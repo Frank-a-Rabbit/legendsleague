@@ -11,6 +11,7 @@ body {
   margin: 0;
   font-family: var(--font-display);
   background-color: var(--bg-color);
+  height: 100vh;
 }
 
 @media (min-width: 800px) {
