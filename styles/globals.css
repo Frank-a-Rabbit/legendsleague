@@ -10,7 +10,7 @@ body {
   padding: 0 0 80px;
   margin: 0;
   font-family: var(--font-display);
-  background-color: #f8f8f2;
+  background-color: var(--bg-color);
   height: 100vh;
 }
 
