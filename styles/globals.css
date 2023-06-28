@@ -10,12 +10,12 @@ body {
   padding: 0 0 80px;
   margin: 0;
   font-family: var(--font-display);
-  height: 100vh;
-}
-
-html {
   background-color: var(--bg-color);
 }
+
+/* html {
+  background-color: var(--bg-color);
+} */
 
 @media (min-width: 800px) {
   html, body { padding: 0; }
