@@ -10,8 +10,11 @@ body {
   padding: 0 0 80px;
   margin: 0;
   font-family: var(--font-display);
-  background-color: var(--bg-color);
   height: 100vh;
+}
+
+html {
+  background-color: var(--bg-color);
 }
 
 @media (min-width: 800px) {
