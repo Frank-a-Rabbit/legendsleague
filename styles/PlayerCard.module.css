@@ -212,7 +212,12 @@
     position: relative;
     margin-top: auto;
     z-index: 1;
-    background-color: midnightblue;
+    color: white;
+    font-size: 19px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
 }
 
 .logo svg text tspan {
