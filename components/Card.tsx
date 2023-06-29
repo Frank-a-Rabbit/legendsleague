@@ -68,23 +68,7 @@ const PlayerCard = ({ data, showDraft, cb = () => {} } : Props) => {
                         <h4>{data.position}</h4>
                     </div>
                     <div className={styles.logo}>
-                        <svg width="270" viewBox="0 0 270 50" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <filter id="textFilter" width="300%" height="300%" x="-150%" y="-150%">
-                                    <feSpecularLighting surfaceScale="0.6" specularConstant="1.5" specularExponent="10" lighting-color="red" in="sourceGraphic" result="lights-final">
-                                        <fePointLight x="135" y="-10" z="120"></fePointLight>
-                                    </feSpecularLighting>
-                                    <feComposite in="lights-final" in2="sourceGraphic" result="comp" operator="in"></feComposite>
-                                </filter>
-                            </defs>
-                            <g filter="url(#textFilter)">
-                                <text x="135" y="40" text-anchor="middle">
-                                    <tspan>Fantasy</tspan>
-                                    <tspan> Football </tspan>
-                                    <tspan>Heroes</tspan>
-                                </text>
-                            </g>
-                        </svg>
+                        <h4>Fantasy Football Heros</h4>
                     </div>
                 </div>
                 <div className={styles.back}>

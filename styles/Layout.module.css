@@ -15,8 +15,6 @@
 }
 
 .footer {
-    position: fixed;
-    bottom: 0;
     width: 100%;
     background: #636365;
     height: 120px;
@@ -32,6 +30,73 @@
 .spacer {
     aspect-ratio: 300 / 400;
     opacity: 0;
+}
+
+.infoCont {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 15px;
+}
+
+.infoCont h1,
+.infoCont h2 {
+    text-align: center;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 1px red;
+}
+
+.infoCont h2 {
+    font-size: 20px;
+    margin: 25px 0;
+}
+
+.infoCont p {
+    font-size: 17px;
+    line-height: 27px;
+    color: red;
+}
+
+.infoCont a {
+    color: red;
+    text-decoration: underline;
+}
+
+.infoCont ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    padding: 0;
+    list-style: none;
+}
+
+.infoCont ul h3 {
+    text-transform: uppercase;
+    color: darkslategray;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.infoCont ul span {
+    display: block;
+    color: darkslategray;
+}
+
+.infoCont ul li {
+    padding: 5px 10px;
+    border-radius: 8px;
+    background-color: lightgrey;
+    box-shadow: 2px 3px 4px rgba(0,0,0,0.4);
+    margin: 0 auto;
+    max-width: 350px;
+    width: 100%;
+}
+
+.infoCont .pHeading {
+    color: black;
 }
 
 @media (min-width: 641px) {
