@@ -126,7 +126,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   </li>
                   <li>
                     <div>
-                      <h3>John Montana</h3>
+                      <h3>Joe Montana</h3>
                       <p>
                         <span>Seasons Played: </span>15<br />
                         <span>Total Interceptions: </span>139<br />
