@@ -1,8 +1,8 @@
 import "../styles/globals.css"
 import styles from "../styles/Layout.module.css"
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import type { AppProps } from "next/app"
-import { UserContextProvider } from "../context/UserContext"
+import { UserContextProvider, UserContext, UserContextType } from "../context/UserContext"
 import PageContextProvider from "../context/PageContext"
 import PlayersContextProvider from "../context/PlayersContext"
 import Header from "../components/Header"
@@ -29,7 +29,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
   }, [router.events])
   const atHome = router.pathname === "/"
-
+  const currentUser = useContext<UserContextType | null>(UserContext)?.currentUser
+  console.log("currentUser ", currentUser)
   return (
     <UserContextProvider>
       <HeadTag></HeadTag>
@@ -41,10 +42,18 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps}></Component>
             {atHome && (
               <div className={styles.infoCont}>
+                {currentUser && (
+                  <div>hi</div>
+                )}
                 <h1>Fantasy Football Heros</h1>
                 <p className={styles.pHeading}>
                   Ever wished you could play fantasy football year round? How about playing at any time, day or night? Well now you can! Fantasy Football Heros allows you to play fantasy football at your leisure using stats from legendary heros of football. See the <Link href="/about">about</Link> page for more information.
                 </p>
+                <p className={styles.pHeading}>
+                  <b>How to play: </b>
+                  Choose 4 quarterbacks, 3 runningbacks, and 2 wide receivers. The game will make selections after each of your picks. Once both teams have been picked a random game from the career of each player will be selected giving the stats needed to calculate scores.
+                </p>
+                <Link className={styles.ctaBtn} href="/login">Signup or login to play</Link>
                 <h2>Available players</h2>
                 <ul>
                   <li>

@@ -17,8 +17,8 @@ const Login = ({ navItem }: loginProps) => {
     const siginWithProvider = (provider : any) => {
         switch(provider) {
             case "go":
-                let service = GoogleAuthProvider
-                firebase.auth().signInWithPopup(service).then(result => {
+                let googleService = GoogleAuthProvider
+                firebase.auth().signInWithPopup(googleService).then(result => {
                     databaseConnection.collection("users").doc(result.user.uid).get().then(doc => {
                         if (doc.exists) {
                             setUser(result.user)
@@ -39,8 +39,8 @@ const Login = ({ navItem }: loginProps) => {
                 })
             break
             case "fb":
-                service = FacebookAuthProvider
-                firebase.auth().signInWithPopup(service).then(result => {
+                let fbService = FacebookAuthProvider
+                firebase.auth().signInWithPopup(fbService).then(result => {
                     databaseConnection.collection("users").doc(result.user.uid).get().then(doc => {
                         if (doc.exists) {
                             setUser(result.user)
@@ -63,7 +63,10 @@ const Login = ({ navItem }: loginProps) => {
         }
     }
     return (
-        <section>
+        <section className={styles.loginCont}>
+            <div className={styles.infoCont}>
+                <p>Choose from one of the providers below to create an account or login to an existing account.</p>
+            </div>
             <nav className={styles.navCont}>
                 <ul>
                     <li onClick={() => siginWithProvider("fb")}><FontAwesomeIcon icon={faFacebook} />Facebook</li>
