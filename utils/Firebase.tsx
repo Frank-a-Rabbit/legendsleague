@@ -3,7 +3,7 @@ import "firebase/compat/firestore"
 import "firebase/compat/auth"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyA6bjf8E7W4KYrDwU1kQ0-nsOJDJfuQbU8",
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
     authDomain: "legends-league-a7809.firebaseapp.com",
     databaseURL: "https://legends-league-a7809.firebaseio.com",
     projectId: "legends-league-a7809",

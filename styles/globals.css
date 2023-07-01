@@ -7,12 +7,11 @@
 
 html,
 body {
-  padding: 0 0 80px;
-  margin: 0;
+  padding: 0 !important;
+  margin: 0 !important;
   font-family: var(--font-display);
   background: var(--bg-color) !important;
   color: black !important;
-  height: 100vh;
 }
 
 @media (min-width: 800px) {

@@ -99,6 +99,12 @@
     color: black;
 }
 
+.ctaBtn {
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 @media (min-width: 641px) {
     .spacer {
         aspect-ratio: 300 / 240;

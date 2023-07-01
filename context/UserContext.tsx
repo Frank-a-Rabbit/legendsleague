@@ -18,39 +18,41 @@ export type UserContextType = {
 
 export const UserContext = createContext<UserContextType | null>(null)
 
-export type userCtx = {
-    currentUser : any,
-    setUser : React.Dispatch<React.SetStateAction<any>>
-}
+// export type userCtx = {
+//     currentUser : any,
+//     setUser : React.Dispatch<React.SetStateAction<any>>
+// }
 
-export const UserContextProvider = ({ children } : Props) => {
-    const [currentUser, setUser] = useState<User | null>(null)
+export const UserContextProvider = ({ children }: Props) => {
+    const [currentUser, setUser] = useState<User | null>(null);
 
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
-            if (user && Object.keys(user).length) {
-                setUser({ user, uid: user.uid, photoURL: user.photoURL })
-            } else {
-                setUser(null)
-            }
-        })
-    }, [])
+        if (user && Object.keys(user).length) {
+            setUser({ user, uid: user.uid, photoURL: user.photoURL });
+        } else {
+            setUser(null);
+        }
+        });
+    }, []);
 
-    const userCtx : userCtx = {
+    const updateUser = (user: User | ((prevState: User | null) => User | null)) => {
+        setUser((prevUser: User | null) => {
+        if (typeof user === 'function') {
+            return user(prevUser);
+        }
+        return user;
+        });
+    };
+
+    const userCtx: UserContextType = {
         currentUser,
-        setUser: (user) => {
-            if (user !== null) {
-                if (user === undefined) return
-                setUser({ user, uid: user.uid, photoURL: user.photoURL })
-            } else if (user === undefined) {
-              setUser(null)
-            }
-          }
-    }
+        setUser: updateUser as React.Dispatch<React.SetStateAction<User | null>>,
+    };
 
     return (
         <UserContext.Provider value={userCtx}>
-            { children }
+        {children}
         </UserContext.Provider>
     )
 }
