@@ -14,8 +14,16 @@ body {
   color: black !important;
 }
 
+body {
+  padding-bottom: 120px !important;
+}
+
 @media (min-width: 800px) {
   html, body { padding: 0; }
+}
+
+#__next {
+  position: relative;
 }
 
 a {
