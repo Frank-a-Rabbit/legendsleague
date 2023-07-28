@@ -11,6 +11,7 @@ const Header = () => {
     const { currentUser, setUser } = useContext(UserContext)
     const { navItem } = useContext(PageContext)
     const [menuState, setMenuState] = useState(false)
+    const [addClass, setAddClass] = useState('')
     const logout = () => {
         firebase.auth().signOut()
         setUser(undefined)
@@ -27,6 +28,7 @@ const Header = () => {
     })
     const router = useRouter()
     useEffect(() => {
+        setAddClass(styles.active)
         const routeChangeComplete = () => {
             setMenuState(false)
         }
@@ -36,7 +38,7 @@ const Header = () => {
         }
     }, [])
     return (
-        <header className={styles.primaryHeader}>
+        <header className={`${styles.primaryHeader} ${addClass}`}>
             <div className={styles.avatarCont}>
                 {currentUser && (
                     <div className={styles.avatarCont}>
