@@ -42,6 +42,10 @@ const Login = () => {
                         })
                     }
                 })
+                .catch((error: Error) => {
+                    console.log("error occurred")
+                    return
+                })
             break
             case "fb":
                 let fbService = FacebookAuthProvider
@@ -72,6 +76,10 @@ const Login = () => {
                         })
                     }
                 })
+                .catch((error: Error) => {
+                    console.log("error occured")
+                    return
+                })
             break
         }
     }
@@ -83,11 +91,14 @@ const Login = () => {
             clearTimeout(timerId);
         }
     }, [])
+    const closePanel = () => {
+        setNewClassName('')
+    }
     return (
         <section className={styles.loginCont}>
             <div className={`${styles.outer} ${newClassName}`}>
                 <div className={styles.inner}>
-                    <button className={styles.close}>Close</button>
+                    <button className={styles.close} onClick={closePanel}>Close</button>
                     <div className={styles.infoCont}>
                         <p>Choose from one of the providers below to create an account or login to an existing account.</p>
                     </div>
