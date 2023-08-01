@@ -4,7 +4,7 @@ import "firebase/compat/auth"
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
-    authDomain: process.env.FIREBASE_AUTHDOMAIN,
+    authDomain: 'legends-league-a7809.firebaseapp.com',
     databaseURL: process.env.FIREBASE_DBURL,
     projectId: process.env.FIREBASE_PROJECTID,
     storageBucket: process.env.FIREBASE_STORAGEBUCKET,

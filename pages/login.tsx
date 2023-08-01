@@ -16,6 +16,7 @@ const Login = () => {
             case "go":
                 let googleService = GoogleAuthProvider
                 firebase.auth().signInWithPopup(googleService).then((result) => {
+                    console.log("Result: ", result)
                     if (result.user) {
                         const { user, uid, photoURL } = result.user
                         const userData: User = {
@@ -43,7 +44,7 @@ const Login = () => {
                     }
                 })
                 .catch((error: Error) => {
-                    console.log("error occurred")
+                    console.log("error occurred ", error)
                     return
                 })
             break
@@ -96,6 +97,9 @@ const Login = () => {
     }
     return (
         <section className={styles.loginCont}>
+            {!newClassName && (
+                <button className={styles.login} onClick={() => setNewClassName(styles.active)}>Login</button>
+            )}
             <div className={`${styles.outer} ${newClassName}`}>
                 <div className={styles.inner}>
                     <button className={styles.close} onClick={closePanel}>Close</button>
