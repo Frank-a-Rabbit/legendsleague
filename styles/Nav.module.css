@@ -146,3 +146,14 @@
 .active {
     opacity: 1;
 }
+
+.logged {
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    color: red;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 25px;
+}

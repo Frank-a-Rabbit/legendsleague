@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import styles from "../styles/Nav.module.css"
 import { useRouter } from "next/router"
+import Link from "next/link"
 
 const Login = () => {
     const { currentUser, setUser } = useContext(UserContext)
@@ -97,23 +98,28 @@ const Login = () => {
     }
     return (
         <section className={styles.loginCont}>
-            {!newClassName && (
+            {!newClassName && !currentUser && (
                 <button className={styles.login} onClick={() => setNewClassName(styles.active)}>Login</button>
             )}
-            <div className={`${styles.outer} ${newClassName}`}>
-                <div className={styles.inner}>
-                    <button className={styles.close} onClick={closePanel}>Close</button>
-                    <div className={styles.infoCont}>
-                        <p>Choose from one of the providers below to create an account or login to an existing account.</p>
+            {!currentUser && (
+                <div className={`${styles.outer} ${newClassName}`}>
+                    <div className={styles.inner}>
+                        <button className={styles.close} onClick={closePanel}>Close</button>
+                        <div className={styles.infoCont}>
+                            <p>Choose from one of the providers below to create an account or login to an existing account.</p>
+                        </div>
+                        <nav className={styles.navCont}>
+                            <ul>
+                                <li onClick={() => siginWithProvider("fb")}><FontAwesomeIcon icon={faFacebook} />Facebook</li>
+                                <li onClick={() => siginWithProvider("go")}><FontAwesomeIcon icon={faGoogle} />Google</li>
+                            </ul>
+                        </nav>
                     </div>
-                    <nav className={styles.navCont}>
-                        <ul>
-                            <li onClick={() => siginWithProvider("fb")}><FontAwesomeIcon icon={faFacebook} />Facebook</li>
-                            <li onClick={() => siginWithProvider("go")}><FontAwesomeIcon icon={faGoogle} />Google</li>
-                        </ul>
-                    </nav>
                 </div>
-            </div>
+            )}
+            {currentUser && (
+                <Link className={styles.logged} href="/play">Play Now</Link>
+            )}
         </section>
     )
 }
