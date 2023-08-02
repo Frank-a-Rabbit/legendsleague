@@ -30,13 +30,19 @@
 }
 
 .spacer {
-    aspect-ratio: 300 / 250;
+    aspect-ratio: 300 / 400;
     opacity: 0;
+}
+
+@media (min-width: 500px) {
+    .spacer {
+        aspect-ratio: 300 / 240;
+    }
 }
 
 .infoCont {
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 0 auto 40px;
     padding: 15px;
 }
 
@@ -66,19 +72,20 @@
 }
 
 .infoCont ul {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
+    gap: 40px;
     padding: 0;
     list-style: none;
+    z-index: 1;
 }
 
 .infoCont ul h3 {
     text-transform: uppercase;
     color: darkslategray;
-    letter-spacing: 2px;
-    text-decoration: underline;
-    font-size: 18px;
+    letter-spacing: 4px;
+    font-size: 20px;
     line-height: 22px;
 }
 
@@ -88,13 +95,25 @@
 }
 
 .infoCont ul li {
+    position: relative;
     padding: 5px 10px;
-    border-radius: 8px;
-    background-color: lightgrey;
+    background-color: white;
     box-shadow: 2px 3px 4px rgba(0,0,0,0.4);
     margin: 0 auto;
     max-width: 350px;
     width: 100%;
+}
+
+.infoCont ul li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: translate(-10px, -10px);
+    background-color: red;
 }
 
 .infoCont .pHeading {

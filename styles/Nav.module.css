@@ -52,6 +52,8 @@
     transform: translate(-50%, -50%);
     padding: 15px;
     opacity: 0;
+    width: 75%;
+    max-width: 650px;
 }
 
 .inner * {
@@ -86,6 +88,49 @@
     opacity: 1;
 }
 
+.close,
+.login {
+    position: absolute;
+    top: -15px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    font-family: var(--font-display);
+    background: red;
+    color: white;
+    letter-spacing: 3px;
+}
+
+.login {
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+}
+
+.login::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200vw;
+    height: 200vh;
+    border-radius: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
 .outer {
     position: fixed;
     top: 0;
@@ -100,4 +145,15 @@
 
 .active {
     opacity: 1;
+}
+
+.logged {
+    display: block;
+    position: relative;
+    z-index: 2;
+    margin-top: 25px;
+    color: red;
+    text-decoration: underline;
+    text-align: center;
+    font-size: 25px;
 }
