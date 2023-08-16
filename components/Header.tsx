@@ -6,8 +6,10 @@ import Image from "next/image"
 import Link from "next/link"
 import styles from "../styles/Header.module.css"
 import { PageContext } from "../context/PageContext"
+import { useDataWatcher } from "../context/DataWatcherContext"
 
 const Header = () => {
+    const { pushToDataLayer, createEvent } = useDataWatcher()
     const { currentUser, setUser } = useContext(UserContext)
     const { navItem } = useContext(PageContext)
     const [menuState, setMenuState] = useState(false)
@@ -17,6 +19,7 @@ const Header = () => {
         setUser(undefined)
     }
     const toggleMenu = () => {
+        console.log('toggle menu')
         setMenuState(!menuState)
     }
     const menuText = menuState === false ? "MENU" : "X"
@@ -24,7 +27,7 @@ const Header = () => {
     if (currentUser !== null) links.push("play")
     const linkItems = links.map(link => {
         let href: string = link === "home" ? "/" : "/"+link
-        return <Link key={link} href={href}>{link.toUpperCase()}</Link>
+        return <Link key={link} href={href} onClick={() => pushToDataLayer(createEvent({event : 'ga4_ffh_link_click', action : 'link_click', category : undefined, ffh_label : link, value : undefined}))}>{link.toUpperCase()}</Link>
     })
     const router = useRouter()
     useEffect(() => {

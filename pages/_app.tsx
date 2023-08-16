@@ -3,6 +3,7 @@ import styles from "../styles/Layout.module.css"
 import React, { useState, useEffect, useContext } from "react"
 import type { AppProps } from "next/app"
 import { UserContextProvider, UserContext, UserContextType } from "../context/UserContext"
+import { DataWatcherProvider } from "../context/DataWatcherContext"
 import PageContextProvider from "../context/PageContext"
 import PlayersContextProvider from "../context/PlayersContext"
 import Header from "../components/Header"
@@ -10,11 +11,12 @@ import HeadTag from "../components/HeadTag"
 import Layout from "../components/Layout"
 import { useRouter } from 'next/router'
 import Link from "next/link"
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [playerList, setPlayerList] = useState([])
   const pageview = (url: string) => {
-    window.gtag('config', process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS, {
+    window.gtag('config', process.env.NEXT_PUBLIC_GA, {
       page_path: url,
     })
   }
@@ -30,9 +32,28 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, [router.events])
   const atHome = router.pathname === "/"
   const currentUser = useContext<UserContextType | null>(UserContext)?.currentUser
-  console.log("currentUser ", currentUser)
   return (
-    <UserContextProvider>
+    <DataWatcherProvider>
+      <UserContextProvider>
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-P8XSC50LB5"></Script>
+      <Script id="google-analytics">
+        {
+          `window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+  
+          gtag('config', '${process.env.NEXT_PUBLIC_GA}');`
+        }
+      </Script>
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {
+          `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GTM}');`
+        }
+      </Script>
       <HeadTag></HeadTag>
       <PageContextProvider context={pageProps}>
         <PlayersContextProvider playerList={playerList} setPlayerList={() => {}}>
@@ -623,6 +644,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </PlayersContextProvider>
       </PageContextProvider>
     </UserContextProvider>
+    </DataWatcherProvider>
   )
 }
 
