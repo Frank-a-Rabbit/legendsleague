@@ -3,13 +3,13 @@ import "firebase/compat/firestore"
 import "firebase/compat/auth"
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_APIKEY,
+    apiKey: 'AIzaSyA6bjf8E7W4KYrDwU1kQ0-nsOJDJfuQbU8',
     authDomain: 'legends-league-a7809.firebaseapp.com',
-    databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DBURL,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECTID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_SENDERID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APPID
+    databaseURL: 'https://legends-league-a7809.firebaseio.com',
+    projectId: 'legends-league-a7809',
+    storageBucket: 'legends-league-a7809.appspot.com',
+    messagingSenderId: '281052354601',
+    appId: '1:281052354601:web:c70098ac856ad608542438'
 }
 
 if (!firebase.apps.length) {
